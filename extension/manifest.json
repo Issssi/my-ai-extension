@@ -1,32 +1,33 @@
 {
-  "manifest_version": 3,
-  "name": "My AI Extension",
-  "version": "1.0",
-  "description": "A simple AI assistant extension.",
-  
-  "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "icons/icon16.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
-    }
-  },
+    "manifest_version": 3,
+    "name": "My AI Extension",
+    "version": "1.0",
+    "description": "Custom sidebar AI assistant.",
 
-  "permissions": [
-    "storage",
-    "activeTab",
-    "scripting"
-  ],
+    "permissions": [
+        "activeTab",
+        "scripting"
+    ],
 
-  "background": {
-    "service_worker": "background.js"
-  },
+    "action": {
+        "default_title": "Toggle AI Sidebar"
+    },
 
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
-  ]
+    "background": {
+        "service_worker": "background.js"
+    },
+
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["contentScript.js"]
+        }
+    ],
+
+    "web_accessible_resources": [
+        {
+            "resources": ["sidebar.html"],
+            "matches": ["<all_urls>"]
+        }
+    ]
 }
