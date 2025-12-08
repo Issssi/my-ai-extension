@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>AI Sidebar</title>
-  <style>
-    body { font-family: Arial; margin: 10px; }
-    #chat { border: 1px solid #ccc; height: 70vh; overflow-y: auto; padding: 10px; }
-    textarea { width: 100%; margin-top: 10px; }
-    button { margin-top: 5px; width: 100%; padding: 10px; }
-  </style>
+    <style>
+        body { font-family: Arial; padding: 10px; background:#111; color:white; }
+        #chat { height: 80vh; overflow-y:auto; }
+        #messageInput { width: 80%; padding:8px; }
+        #sendBtn { padding:8px; }
+        .msg { margin: 6px 0; }
+    </style>
 </head>
 <body>
-  <div id="chat"></div>
-  <textarea id="prompt" rows="3" placeholder="Ask something..."></textarea>
-  <button id="send">Send</button>
+    <div id="chat"></div>
 
-  <script src="sidebar.js"></script>
+    <input id="messageInput" placeholder="Ask something..." />
+    <button id="sendBtn">Send</button>
+
+    <script src="sidebar.js"></script>
 </body>
 </html>
