@@ -1,19 +1,25 @@
-// Simple sidebar AI UI logic
-const input = document.getElementById("ai-input");
-const sendBtn = document.getElementById("ai-send");
-const output = document.getElementById("ai-output");
+document.getElementById("sendBtn").addEventListener("click", sendMessage);
 
-sendBtn.onclick = async () => {
-    const userText = input.value.trim();
-    if (!userText) return;
+function sendMessage() {
+    const input = document.getElementById("messageInput");
+    const text = input.value.trim();
+    if (!text) return;
 
-    output.innerHTML += `<div class="user">${userText}</div>`;
+    addMessage("You", text);
     input.value = "";
 
     chrome.runtime.sendMessage(
-        { type: "ask-ai", text: userText },
-        (res) => {
-            output.innerHTML += `<div class="ai">${res.reply}</div>`;
+        { type: "ask-ai", text },
+        (response) => {
+            addMessage("AI", response.reply);
         }
     );
-};
+}
+
+function addMessage(sender, text) {
+    const chat = document.getElementById("chat");
+    const div = document.createElement("div");
+    div.className = "msg";
+    div.innerHTML = `<strong>${sender}:</strong> ${text}`;
+    chat.appendChild(div);
+}
